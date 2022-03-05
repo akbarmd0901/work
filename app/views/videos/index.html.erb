@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Videos</h1>
+
+<table>
+ 
+  <tbody>
+    <% @videos.each do |video| %>
+      <tr>
+        <td><%= video.title %></td>
+      </tr>  
+        
+      <tr>
+        <td><%= link_to 'Show', video, class: "btn btn-outline-primary" %></td>
+        <td><%#= link_to 'Edit', edit_video_path(video), class: "btn btn-outline-primary"  %></td>
+        <td><%#= link_to 'Destroy', video, class: "btn btn-outline-primary",
+         method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= button_to "Back to courses", '/courses', method: :get, class: "btn btn-primary" %>
+
+<br>
+
+<%= link_to 'New Video', new_video_path, class: "btn btn-outline-primary" %>

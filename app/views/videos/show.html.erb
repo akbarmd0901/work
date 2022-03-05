@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+   <video controls width="640" height="480" src="<%= @video.file %>"></video>
+</p>
+<p>
+  <%= @video.title %>
+</p>
+
+
+<%= link_to 'Edit', edit_video_path(@video), class: "btn btn-outline-success" %> |
+<%= link_to 'Back', videos_path, class: "btn btn-outline-success" %>
+<td><%= link_to 'Destroy', @video, class: "btn btn-outline-primary",
+         method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+<h2>Comments</h2>
+
+<% @video.comments.each do |comment| %>
+  
+  <p>
+   <strong>Comment:</strong>
+    <%= comment.body %>
+  </p>
+
+ 
+  <%= link_to "Delete", 
+   video_comment_path(@video,comment), data:{
+    turbo_method: :delete,
+    turbo_confirm: "Are you sure?"
+  } %>
+<% end %>
+   
+
+<%= form_with model: [ @video, @video.comments.build ] do |form| %>
+  <div>
+    <%= form.text_field :body %><br><br>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

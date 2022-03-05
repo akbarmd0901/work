@@ -1,0 +1,28 @@
+<%= form_with model: course do |form| %>
+  <div>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+    <% course.errors.full_messages_for(:name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :discription %><br>
+    <%= form.text_area :discription %><br>
+    <% course.errors.full_messages_for(:discription).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+  <%= form.file_field :image %>
+  </div>
+
+  <br>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %><br>
+
+<%= button_to "Back to courses", '/courses', method: :get %>
